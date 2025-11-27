@@ -1,30 +1,48 @@
-// Navbar.jsx
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const links = [
-    { name: "Home", href: "#home" },
-    { name: "Tools", href: "#tools" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Certification", href: "#certification" },
+    { name: "Home", id: "home" },
+    { name: "Tools", id: "tools" },
+    { name: "Experience", id: "experience" },
+    { name: "Projects", id: "projects" },
+    { name: "Certification", id: "certification" },
   ];
+
+  const handleNavClick = (id) => {
+    setOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate("/", { replace: false });
+
+      // tunggu sampai halaman home selesai dirender
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-end h-16">
+        
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8 text-base">
           {links.map((l) => (
             <li key={l.name}>
-              <a
-                href={l.href}
+              <button
+                onClick={() => handleNavClick(l.id)}
                 className="hover:opacity-80 transition"
               >
                 {l.name}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
@@ -45,13 +63,12 @@ export default function Navbar() {
         <ul className="md:hidden bg-maroon text-white px-6 py-4 space-y-3 flex flex-col">
           {links.map((l) => (
             <li key={l.name}>
-              <a
-                href={l.href}
-                className="block py-1 hover:opacity-80 transition"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => handleNavClick(l.id)}
+                className="block py-1 hover:opacity-80 transition text-left"
               >
                 {l.name}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
