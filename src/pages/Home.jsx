@@ -195,7 +195,7 @@ export default function HomePage() {
           </p>
           
           <a
-            href="/cv.pdf"
+            href="/resume/Resume_NawalAlhamid.pdf"
             download
             className="inline-block mt-6 bg-maroon text-white px-6 py-2 rounded-lg shadow hover:opacity-90 transition"
           >
