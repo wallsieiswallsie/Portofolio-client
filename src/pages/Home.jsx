@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ProfilePic from "../assets/ProfilePic.jpg";
+import ProfilePic from "../assets/ProfilePic.JPG";
 import { 
   ChevronDown,
   MapPin,
@@ -23,7 +23,7 @@ import {
   SiGit,
 } from "react-icons/si";
 import KelulusanDicoding from "../assets/experience/KelulusanDicoding.jpg";
-import InstagramGEx from "../assets/experience/InstagramGEx.png";
+import InstagramGEx from "../assets/experience/InstagramGEx.PNG";
 import Project1 from "../assets/project/Project_1.png"
 import Project2 from "../assets/project/Project_2.png";
 import PDFModal from "../components/PDFModal";
